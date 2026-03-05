@@ -8,8 +8,11 @@ class FishSpeechTTS:
 
     Expects an endpoint:
         POST /v1/tts
-        Body JSON: {"text": "...", "language": "en", "reference_id": "..."}
+        Body JSON: {"text": "...", "format": "wav"}
         Response: WAV audio bytes
+
+    Fish Speech auto-detects language from the input text.
+    Voice cloning via references is not yet implemented (Phase 2).
     """
 
     def __init__(self, endpoint: str) -> None:
@@ -22,10 +25,8 @@ class FishSpeechTTS:
 
         payload: dict[str, str] = {
             "text": text,
-            "language": language,
+            "format": "wav",
         }
-        if voice:
-            payload["reference_id"] = voice
 
         response = httpx.post(url, json=payload, timeout=120.0)
         response.raise_for_status()
