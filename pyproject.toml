@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "stt-tts-project"
+version = "0.1.0"
+description = "Pluggable STT and TTS client with configurable providers"
+requires-python = ">=3.10"
+dependencies = [
+    "sounddevice>=0.4.6",
+    "soundfile>=0.12.1",
+    "numpy>=1.24.0",
+    "httpx>=0.25.0",
+    "pyyaml>=6.0",
+    "click>=8.1.0",
+]
+
+[project.scripts]
+stt-tts = "src.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["src*"]

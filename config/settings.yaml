@@ -1,0 +1,17 @@
+stt:
+  provider: "faster-whisper"
+  endpoint: "http://localhost:8001"
+  language: "auto"
+
+tts:
+  provider: "xtts-v2"
+  endpoint: "http://localhost:8002"
+  voice: "default"
+  language: "en"
+
+audio:
+  sample_rate: 16000
+  channels: 1
+  silence_threshold: 0.01
+  silence_duration_ms: 1000
+  max_record_seconds: 30
